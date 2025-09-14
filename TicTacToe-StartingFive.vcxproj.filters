@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TicTacToe-HelloWorld.cpp">
+    <ClCompile Include="TicTacToe-StartingFive.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
