@@ -1,19 +1,61 @@
-// TicTacToe-StartingFive.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
 #include <iostream>
+#include <tuple>
+#include <cstdlib>
+#include "Input.h"
+using namespace std;
+
+void printTitleHeader() {
+    cout << R"(  _______ _   _______      _______         )" << endl;
+    cout << R"( |__   __(_) |__   __|    |__   __|        )" << endl;
+    cout << R"(    | |   _  ___| | __ _  ___| | ___   ___ )" << endl;
+    cout << R"(    | |  | |/ __| |/ _` |/ __| |/ _ \ / _ \)" << endl;
+    cout << R"(    | |  | | (__| | (_| | (__| | (_) |  __/)" << endl;
+    cout << R"(    |_|  |_|\___|_|\__,_|\___|_|\___/ \___|)" << endl;
+    cout << endl;
+    cout << "Created by: Brendan, John, Mike, Philip, and Sam" << endl;
+    cout << endl;
+}
+
+void printInstructions() {
+    string done;
+    cout << "\nInstructions: ...\n";
+
+    cout << "\nPress Enter to continue...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+}
 
 int main()
 {
-    std::cout << "Hello TicTacToe!\n";
+    //Game game();
+
+    enum menuOptionValues {
+        LABEL,
+        ACTION,
+    };
+
+    // Menu Options [LABEL, ACTION (Void Function Pointer)]
+    tuple<string, void(*)()> menuOptions[] = {
+        //{"Start Game", game.Start()},
+        {"Instructions", printInstructions},
+        {"Exit Game", [](){ exit(0); }},
+    };
+
+    int numberOfMenuOptions = sizeof(menuOptions) / sizeof(menuOptions[0]);
+
+    while(true)
+    {
+        printTitleHeader();
+
+        // Print numbered menu options
+        for (int i = 0; i < numberOfMenuOptions; ++i) {
+            cout << i + 1 << ". " << get<LABEL>(menuOptions[i]) << endl;
+        }
+        cout << endl;
+
+        // Call menuOption's ACTION
+        get<ACTION>(menuOptions[inputInt(1, numberOfMenuOptions) - 1])();
+
+        system("cls");
+    }
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
