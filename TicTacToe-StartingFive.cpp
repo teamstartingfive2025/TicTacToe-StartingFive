@@ -13,6 +13,15 @@ void printTitleHeader() {
     cout << endl;
 }
 
+void printInstructions() {
+    string done;
+    cout << "\nInstructions: ...\n";
+
+    cout << "\nPress Enter to continue...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+}
+
 int main()
 {
     printTitleHeader();
