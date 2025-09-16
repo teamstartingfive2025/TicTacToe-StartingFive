@@ -26,7 +26,7 @@ int inputInt(int lowerBound = INT_MIN, int upperBound = INT_MAX) {
 		else if (parsedInput < lowerBound)
 			cout << "\nSelection is below lower bound!\n";
 		else if (parsedInput > upperBound)
-			cout << "\nSelection is above lower upper!\n";
+			cout << "\nSelection is above upper bound!\n";
 		else
 			return parsedInput;
 	}
