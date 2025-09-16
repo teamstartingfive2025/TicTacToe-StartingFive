@@ -1,4 +1,7 @@
 #include <iostream>
+#include <tuple>
+#include <cstdlib>
+#include "Input.h"
 using namespace std;
 
 void printTitleHeader() {
@@ -24,5 +27,35 @@ void printInstructions() {
 
 int main()
 {
-    printTitleHeader();
+    //Game game();
+
+    enum menuOptionValues {
+        LABEL,
+        ACTION,
+    };
+
+    // Menu Options [LABEL, ACTION (Void Function Pointer)]
+    tuple<string, void(*)()> menuOptions[] = {
+        //{"Start Game", game.Start()},
+        {"Instructions", printInstructions},
+        {"Exit Game", [](){ exit(0); }},
+    };
+
+    int numberOfMenuOptions = sizeof(menuOptions) / sizeof(menuOptions[0]);
+
+    while(true)
+    {
+        printTitleHeader();
+
+        // Print numbered menu options
+        for (int i = 0; i < numberOfMenuOptions; ++i) {
+            cout << i + 1 << ". " << get<LABEL>(menuOptions[i]) << endl;
+        }
+        cout << endl;
+
+        // Call menuOption's ACTION
+        get<ACTION>(menuOptions[inputInt(1, numberOfMenuOptions) - 1])();
+
+        system("cls");
+    }
 }
