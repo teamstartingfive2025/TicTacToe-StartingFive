@@ -20,15 +20,6 @@ bool Board::updateSpace(int p, char c) {
 
 	int x = (p - 1) % 3;
 
-	// Verify space is within bounds. If not print appropriate error message and return false
-	if (x > 3 || x < 0) {
-		cout << "Position out of bounds\n";
-		return false;
-	}
-	if (y > 3 || y < 0) {
-		cout << "Position out of bounds\n";
-		return false;
-	}
 	// Verify space is empty. If not print appropriate error message and return false
 	if (spaces[y][x] == 'X' || spaces[y][x] == 'O') {
 		cout << "\nChoose an empty position\n";
