@@ -4,7 +4,6 @@
 #include "Input.h"
 using namespace std;
 
-
 void Game::Start() {
     board.Reset();
     int pieceSelected = 0;
@@ -35,6 +34,6 @@ void Game::Start() {
         }
 
         // Alternate turn
-        pieceSelected = 1 - pieceSelected;
+        pieceSelected = (pieceSelected + 1) % 2;
     }
 }
