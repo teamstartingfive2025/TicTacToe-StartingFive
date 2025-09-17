@@ -16,7 +16,12 @@ void Board::reset() {
 	return;
 }
 
-bool Board::updateSpace(int y, int x, char c) {
+bool Board::updateSpace(int p, char c) {
+	//convert sequential position to coordinates
+	int y = (p - 1) / 3;
+
+	int x = (p - 1) % 3;
+
 	// Verify space is within bounds. If not print appropriate error message and return false
 	if (x > 3 || x < 0) {
 		cout << "Position out of bounds\n";
@@ -27,7 +32,7 @@ bool Board::updateSpace(int y, int x, char c) {
 		return false;
 	}
 	// Verify space is empty. If not print appropriate error message and return false
-	if (spaces[y][x] != '\0') {
+	if (spaces[y][x] != ' ') {
 		cout << "Choose an empty position\n";
 		return false;
 	}
@@ -37,7 +42,12 @@ bool Board::updateSpace(int y, int x, char c) {
 	return true;
 }
 
-bool Board::checkWin(int y, int x) {
+bool Board::checkWin(int p) {
+	//convert sequential position to coordinates
+	int y = (p - 1) / 3;
+
+	int x = (p - 1) % 3;
+
 	//check if the given piece at the given location has resulted in a win; yes: return true, no: return false
 	
 	//check horizontal and vertical

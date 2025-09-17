@@ -14,9 +14,9 @@ public:
 
 	void reset();
 
-	bool updateSpace(int y, int x, char c);
+	bool updateSpace(int p, char c);
 
-	bool checkWin(int y, int x);
+	bool checkWin(int p);
 
 	void printBoard();
 };
