@@ -6,7 +6,7 @@ Board::Board() {
 	reset();
 }
 
-void Board::reset() {
+void Board::Reset() {
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
@@ -81,4 +81,8 @@ void Board::printBoard() {
 		}
 		if (i < 2) cout << "\n---|---|---\n";
 	}
+}
+
+bool Board::IsFull() {
+	return false;
 }

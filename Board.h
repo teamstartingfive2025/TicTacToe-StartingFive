@@ -12,12 +12,14 @@ public:
 
 	Board();
 
-	void reset();
+	void Reset();
 
 	bool updateSpace(int p, char c);
 
 	bool checkWin(int p);
 
 	void printBoard();
+
+	bool IsFull();
 };
 #endif
