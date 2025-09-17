@@ -72,12 +72,18 @@ bool Board::checkWin(int p) {
 }
 
 void Board::printBoard() {
+	system("cls");
+
+	cout << endl;
 	for(int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
-			cout<<" ";
-			cout<<spaces[i][j];
-			if (j < 2) cout << " |";
+			if(spaces[i][j] == 'X' || spaces[i][j] == 'O')
+				cout << " " << spaces[i][j] << " ";
+			else
+				cout << " " << i*3 + j+1 << " ";
+			
+			if (j < 2) cout << "|";
 		}
 		if (i < 2) cout << "\n---|---|---\n";
 	}
