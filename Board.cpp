@@ -32,8 +32,8 @@ bool Board::updateSpace(int p, char c) {
 		return false;
 	}
 	// Verify space is empty. If not print appropriate error message and return false
-	if (spaces[y][x] != ' ') {
-		cout << "Choose an empty position\n";
+	if (spaces[y][x] == 'X' || spaces[y][x] == 'O') {
+		cout << "\nChoose an empty position\n";
 		return false;
 	}
 
