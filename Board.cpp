@@ -10,7 +10,7 @@ void Board::reset() {
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
-			spaces[i][j] = '\0';
+			spaces[i][j] = ' ';
 		}
 	}
 	return;
@@ -59,4 +59,16 @@ bool Board::checkWin(int y, int x) {
 		}
 	}
 	return false;
+}
+
+void Board::printBoard() {
+	for(int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++) {
+			cout<<" ";
+			cout<<spaces[i][j];
+			if (j < 2) cout << " ?";
+		}
+		if (i < 2) cout << "\n???????????\n";
+	}
 }

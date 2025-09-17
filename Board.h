@@ -17,5 +17,7 @@ public:
 	bool updateSpace(int y, int x, char c);
 
 	bool checkWin(int y, int x);
+
+	void printBoard();
 };
 #endif
