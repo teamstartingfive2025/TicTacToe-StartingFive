@@ -2,9 +2,7 @@
 #include "Board.h"
 using namespace std;
 
-Board::Board() {
-	reset();
-}
+Board::Board() {}
 
 void Board::Reset() {
 	for (int i = 0; i < 3; i++)
