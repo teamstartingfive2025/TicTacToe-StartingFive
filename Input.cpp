@@ -31,3 +31,9 @@ int inputInt(int lowerBound = INT_MIN, int upperBound = INT_MAX) {
 			return parsedInput;
 	}
 }
+
+void hang() {
+	cout << "\nPress Enter to continue...";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
+}

@@ -1,7 +1,9 @@
 #include <iostream>
 #include <tuple>
 #include <cstdlib>
+#include <functional>
 #include "Input.h"
+#include "Game.h"
 using namespace std;
 
 void printTitleHeader() {
@@ -17,21 +19,20 @@ void printTitleHeader() {
 }
 
 void printInstructions() {
+    system("cls");
+
     cout << "\nInstructions:\n";
     cout << "\tPlayer 1 is X and Player 2 is O.\n";
     cout << "\tTake turns selecting a numbered space (1-9).\n";
     cout << "\tThe goal is to get three in a row, column, or diagonal.\n";
     cout << "\tIf all spaces are filled with no winner, it's a tie.\n";
 
-    string done;
-    cout << "\nPress Enter to continue...";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.get();
+    hang();
 }
 
 int main()
 {
-    //Game game();
+    Game game;
 
     enum menuOptionValues {
         LABEL,
@@ -39,8 +40,8 @@ int main()
     };
 
     // Menu Options [LABEL, ACTION (Void Function Pointer)]
-    tuple<string, void(*)()> menuOptions[] = {
-        //{"Start Game", game.Start()},
+    tuple<string, std::function<void()>> menuOptions[] = {
+        {"Start Game", [&game](){ game.Start(); }},
         {"Instructions", printInstructions},
         {"Exit Game", [](){ exit(0); }},
     };
