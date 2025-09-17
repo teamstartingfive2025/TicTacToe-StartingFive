@@ -43,31 +43,27 @@ bool Board::updateSpace(int p, char c) {
 }
 
 bool Board::checkWin(int p) {
-	//convert sequential position to coordinates
-	int y = (p - 1) / 3;
+	if (p < 1 || p > 9) return false;
 
+	int y = (p - 1) / 3;
 	int x = (p - 1) % 3;
 
-	//check if the given piece at the given location has resulted in a win; yes: return true, no: return false
-	
-	//check horizontal and vertical
-	if (/*horizontal*/
-		(spaces[y][0] == spaces[y][1] && spaces[y][1] == spaces[y][2]) ||
-		/*vertical*/
-		(spaces[0][x] == spaces[1][x] && spaces[1][x] == spaces[2][x])
-		) {
+	char current = spaces[y][x];
+	if (current == ' ') return false;
+
+	// Check row
+	if (spaces[y][0] == current && spaces[y][1] == current && spaces[y][2] == current)
 		return true;
-	}
-	//check diagonal if given (0,0), (0,2), (2,0), (2,2), (1,1)
-	if (((x == 0 || x == 2) && (y == 0 || y == 2)) || (x == 1 && y == 1)) {
-		if (
-			//top-left to bottom-right
-			(spaces[0][0] == spaces[1][1] && spaces[1][1] == spaces[2][2]) ||
-			//top-right to bottom-left
-			(spaces[0][2] == spaces[1][1] && spaces[1][1] == spaces[2][0])) {
-			return true;
-		}
-	}
+
+	// Check column
+	if (spaces[0][x] == current && spaces[1][x] == current && spaces[2][x] == current)
+		return true;
+
+	// Check diagonals
+	if ((spaces[0][0] == current && spaces[1][1] == current && spaces[2][2] == current) ||
+		(spaces[0][2] == current && spaces[1][1] == current && spaces[2][0] == current))
+		return true;
+
 	return false;
 }
 
