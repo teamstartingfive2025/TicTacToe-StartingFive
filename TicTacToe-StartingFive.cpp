@@ -1,7 +1,9 @@
 #include <iostream>
 #include <tuple>
 #include <cstdlib>
+#include <functional>
 #include "Input.h"
+#include "Game.h"
 using namespace std;
 
 void printTitleHeader() {
@@ -30,7 +32,7 @@ void printInstructions() {
 
 int main()
 {
-    //Game game();
+    Game game;
 
     enum menuOptionValues {
         LABEL,
@@ -38,8 +40,8 @@ int main()
     };
 
     // Menu Options [LABEL, ACTION (Void Function Pointer)]
-    tuple<string, void(*)()> menuOptions[] = {
-        //{"Start Game", game.Start()},
+    tuple<string, std::function<void()>> menuOptions[] = {
+        {"Start Game", [&game](){ game.Start(); }},
         {"Instructions", printInstructions},
         {"Exit Game", [](){ exit(0); }},
     };
