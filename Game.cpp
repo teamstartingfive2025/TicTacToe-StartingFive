@@ -1,6 +1,7 @@
 #include "Board.h"
 #include "Game.h"
 #include <iostream>
+#include "Input.h"
 using namespace std;
 
 
@@ -12,23 +13,11 @@ void Game::Start() {
     while (true) {
         board.printBoard();
 
-        bool moved = false;
-        while (!moved) {
-            cout << pieces[pieceSelected] << "'s turn, enter a space: ";
-            int sel;
-            if (!(cin >> sel)) {
-                cin.clear();
-                cin.ignore(1000000000000, '\n');
-                cout << "Please enter a number between 1 and 9.\n";
-                continue;
-            }
+        cout << "\n\n" << pieces[pieceSelected] << "'s turn, enter a space\n";
+        int sel = inputInt(1, 9);
 
-            if (!board.updateSpace(sel, pieces[pieceSelected])) {
-                cout << "Invalid move! Pick an unoccupied number from 1 to 9.\n";
-            }
-            else {
-                moved = true;
-            }
+        while (!board.updateSpace(sel, pieces[pieceSelected])) {
+            sel = inputInt(1, 9);
         }
         char w = board.checkWin();
         if (w == 'X' || w == 'O') {
