@@ -2,4 +2,6 @@
 #define INPUT_H     
 
 int inputInt(int upperBound, int lowerBound);
+void hang();
+
 #endif     

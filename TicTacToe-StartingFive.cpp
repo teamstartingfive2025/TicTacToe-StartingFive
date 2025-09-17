@@ -17,16 +17,15 @@ void printTitleHeader() {
 }
 
 void printInstructions() {
+    system("cls");
+
     cout << "\nInstructions:\n";
     cout << "\tPlayer 1 is X and Player 2 is O.\n";
     cout << "\tTake turns selecting a numbered space (1-9).\n";
     cout << "\tThe goal is to get three in a row, column, or diagonal.\n";
     cout << "\tIf all spaces are filled with no winner, it's a tie.\n";
 
-    string done;
-    cout << "\nPress Enter to continue...";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.get();
+    hang();
 }
 
 int main()
