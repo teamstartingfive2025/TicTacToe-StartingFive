@@ -67,8 +67,8 @@ void Board::printBoard() {
 		for (int j = 0; j < 3; j++) {
 			cout<<" ";
 			cout<<spaces[i][j];
-			if (j < 2) cout << " ?";
+			if (j < 2) cout << " |";
 		}
-		if (i < 2) cout << "\n???????????\n";
+		if (i < 2) cout << "\n---|---|---\n";
 	}
 }
