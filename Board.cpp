@@ -90,5 +90,13 @@ void Board::printBoard() {
 }
 
 bool Board::IsFull() {
-	return false;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++) {
+			if (spaces[i][j] != 'X' && spaces[i][j] != 'O')
+				return false;
+		}
+	}
+
+	return true;
 }
