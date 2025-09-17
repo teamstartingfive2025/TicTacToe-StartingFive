@@ -5,6 +5,7 @@
 
 class Board {
 private:
+
 	char spaces[3][3];
 
 public:
