@@ -19,15 +19,18 @@ void Game::Start() {
         while (!board.updateSpace(sel, pieces[pieceSelected])) {
             sel = inputInt(1, 9);
         }
-        char w = board.checkWin();
-        if (w == 'X' || w == 'O') {
+
+        if (board.checkWin(sel)) {
             board.printBoard();
-            cout << w << " wins!\n";
+            cout << "\n\n" << pieces[pieceSelected] << " wins!\n";
+            hang();
             break;
         }
-        if (board.IsFull()) { //Implement is full
+
+        if (board.IsFull()) { 
             board.printBoard();
-            cout << "It's a draw!\n";
+            cout << "\n\n" << "It's a draw!\n";
+            hang();
             break;
         }
 
