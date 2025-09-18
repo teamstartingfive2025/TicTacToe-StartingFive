@@ -19,7 +19,7 @@ int inputInt(int lowerBound = INT_MIN, int upperBound = INT_MAX) {
 
 	while(true) {
 		cout << "Selection: ";
-		cin >> input;
+		getline(cin, input);
 
 		if (!TryParseStoi(input, parsedInput))
 			cout << "\nSelection is not a valid integer!\n";
@@ -29,11 +29,12 @@ int inputInt(int lowerBound = INT_MIN, int upperBound = INT_MAX) {
 			cout << "\nSelection is above upper bound!\n";
 		else
 			return parsedInput;
+
+		cin.clear();
 	}
 }
 
 void hang() {
 	cout << "\nPress Enter to continue...";
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cin.get();
 }
